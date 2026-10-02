@@ -1,0 +1,60 @@
+/* botón de búsqueda: solo en móvil (donde no hay Ctrl+K) */
+.mobile-search{display:none}
+@media (max-width:760px){
+  .mobile-search{display:grid}
+  .mobile-search svg{width:1.05rem;height:1.05rem;stroke-width:1.8}
+}
+
+/* ============================================================
+   BARRA INFERIOR · navegación táctil
+   Sustituye al cajón en móvil: 4 destinos + "más" con el resto.
+   Se oculta por completo en escritorio.
+   ============================================================ */
+.tabbar{
+  display:none;
+  position:fixed;left:0;right:0;bottom:0;z-index:64;
+  padding:5px max(.4rem,env(safe-area-inset-right)) max(5px,env(safe-area-inset-bottom)) max(.4rem,env(safe-area-inset-left));
+  background:rgba(7,7,9,.9);
+  border-top:1px solid var(--stroke);
+  backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);
+}
+@media (max-width:1180px){
+  .tabbar{display:flex}
+  /* el contenido deja de ir hasta el borde inferior */
+  .view{padding-bottom:calc(4.6rem + env(safe-area-inset-bottom))}
+  /* en movil el boton de menu sigue haciendo falta para el resto de vistas */
+  .nav-toggle{display:grid}
+}
+@media (max-width:900px){ .view{padding-bottom:calc(4.4rem + env(safe-area-inset-bottom))} }
+
+.tab{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  padding:.4rem .15rem .3rem;border-radius:11px;color:var(--txt-3);
+  font-size:.63rem;font-weight:600;position:relative;min-height:3rem;
+  transition:color var(--dur-fast),transform var(--dur-fast)
+}
+.tab:active{transform:scale(.94)}
+.tab svg{width:1.2rem;height:1.2rem;stroke-width:1.65;transition:stroke-width var(--dur-fast),transform var(--dur-fast)}
+.tab span{line-height:1;font-size:.62rem;letter-spacing:-.01em}
+.tab.on{color:#fff}
+.tab.on svg{stroke:color-mix(in srgb,var(--accent) 90%,#fff);stroke-width:2.05}
+.tab.on::after{
+  content:"";position:absolute;top:2px;left:50%;transform:translateX(-50%);
+  width:1.35rem;height:.19rem;border-radius:3px;
+  background:var(--accent);
+  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent);
+  animation:tabBarIn .32s var(--ease)
+}
+@keyframes tabBarIn{from{opacity:0;transform:translateX(-50%) scaleX(.2)}to{opacity:1;transform:translateX(-50%) scaleX(1)}}
+.tab .badge{
+  position:absolute;top:3px;right:calc(50% - 1.05rem);
+  min-width:.85rem;height:.85rem;padding:0 .2rem;border-radius:20px;
+  background:var(--bad);color:#fff;font-size:.53rem;font-weight:700;
+  display:grid;place-items:center;font-variant-numeric:tabular-nums;
+  box-shadow:0 0 0 2px #070709
+}
+
+/* botón "más": abre el cajón con el resto */
+.tab.more{color:var(--txt-3)}
+.tab.more .dots{display:flex;gap:2px;align-items:center;height:1.2rem}
+.tab.more .dots i{width:3px;height:3px;border-radius:50%;background:currentColor}

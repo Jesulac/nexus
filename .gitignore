@@ -1,0 +1,28 @@
+.vercel/
+
+# build
+dist/
+
+# dependencias de pruebas (se reinstalan con npm install --no-save puppeteer-core)
+node_modules/
+package-lock.json
+
+# artefactos de QA
+*.png
+verify*.js
+qa-*.js
+debug*.js
+probe*.js
+t1*.js
+t2*.js
+t3*.js
+t4*.js
+t5*.js
+t6*.js
+t7*.js
+t8*.js
+t9*.js
+
+# sistema
+.DS_Store
+Thumbs.db

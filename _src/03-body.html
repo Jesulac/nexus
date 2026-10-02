@@ -1,0 +1,105 @@
+</style>
+</head>
+<body class="oled">
+
+<!-- antes había halos de color con degradado; ahora el fondo es negro puro -->
+<div class="nav-scrim" id="navScrim"></div>
+
+<div class="app" id="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><span>N</span></div>
+      <div class="brand-txt"><b>NEXUS</b><span>Centro de control</span></div>
+      <button class="icon-btn collapse" data-act="collapse" title="Contraer barra lateral" aria-label="Contraer barra lateral"></button>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot">
+      <div class="meter" title="Objetivos completados esta semana">
+        <div class="meter-head"><span>Semana</span><b id="weekPct">0%</b></div>
+        <div class="meter-track"><i id="weekBar" style="width:0%"></i></div>
+      </div>
+      <button class="user" data-act="go" data-id="ajustes">
+        <span class="avatar">J</span>
+        <span class="user-txt"><b>Jesús Martín</b><span>Jaén · Espacio personal</span></span>
+        <span class="user-go"></span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="nav-toggle" id="navToggle" data-act="nav-toggle" aria-label="Abrir menú" aria-expanded="false"></button>
+      <div class="crumbs">
+        <b id="pageTitle">Panel</b>
+        <small id="pageSub">Resumen general</small>
+      </div>
+
+      <button class="search" data-act="palette" id="searchBtn">
+        <span class="search-ic"></span>
+        <span class="search-tx">Buscar tareas, notas, comandos…</span>
+        <kbd id="kbdHint">⌘K</kbd>
+      </button>
+
+      <!-- botón de búsqueda para móvil: en un teléfono no hay Ctrl+K -->
+      <button class="icon-btn mobile-search" id="mobileSearch" data-act="palette" title="Buscar" aria-label="Buscar"></button>
+
+      <div class="top-right">
+        <div class="clock"><b id="clockTime">--:--:--</b><span id="clockDate">—</span></div>
+        <button class="icon-btn bell" data-act="notif" title="Notificaciones" aria-label="Notificaciones">
+          <span class="bell-ic"></span><i class="dot" id="notifDot" hidden></i>
+        </button>
+        <button class="avatar-btn" data-act="palette" title="Abrir paleta de comandos">J</button>
+      </div>
+    </header>
+
+    <main class="view" id="view" tabindex="-1"></main>
+  </div>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="panel" id="notifPanel" aria-hidden="true">
+  <div class="panel-head">
+    <b>Notificaciones</b>
+    <div class="panel-head-act">
+      <button class="btn ghost xs" data-act="notif-read-all">Marcar leídas</button>
+      <button class="icon-btn sm" data-act="notif-close" aria-label="Cerrar"></button>
+    </div>
+  </div>
+  <div class="panel-body" id="notifList"></div>
+  <div class="panel-foot"><span id="notifCount">0</span> notificaciones</div>
+</aside>
+
+<div class="palette-wrap" id="paletteWrap" hidden>
+  <div class="palette">
+    <div class="pal-input">
+      <span class="pal-ic"></span>
+      <input id="palInput" type="text" placeholder="Escribe un comando o busca contenido…" autocomplete="off" spellcheck="false" />
+      <kbd>ESC</kbd>
+    </div>
+    <div class="pal-list" id="palList"></div>
+    <div class="pal-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+      <span><kbd>↵</kbd> ejecutar</span>
+      <span><kbd>esc</kbd> cerrar</span>
+      <span class="pal-count" id="palCount"></span>
+    </div>
+  </div>
+</div>
+
+<div class="modal-root" id="modalRoot" hidden></div>
+<div class="toasts" id="toasts"></div>
+
+<nav class="tabbar" id="tabbar" aria-label="Navegación principal"></nav>
+
+<div class="too-small">
+  <div class="ts-card">
+    <div class="ts-mark">NEXUS</div>
+    <h1>Requiere escritorio</h1>
+    <p>Esta aplicación está optimizada para pantallas de <b>1366×768</b> o mayores y no mantiene una versión móvil.</p>
+    <p class="ts-dim">Amplía la ventana o usa un monitor para continuar.</p>
+  </div>
+</div>
+
+<script>

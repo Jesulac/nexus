@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>NEXUS</title>
+<script>
+  /* GitHub Pages no reescribe rutas en un SPA: si el usuario entra en una ruta
+     interna, redirigimos al index conservando el hash de la sección. */
+  sessionStorage.redirect = location.href;
+  location.replace('./' + (location.hash || ''));
+</script>
+</head>
+<body style="background:#000;color:#eee;font-family:system-ui;display:grid;place-items:center;height:100vh;margin:0">
+  <p>Abriendo NEXUS…</p>
+</body>
+</html>

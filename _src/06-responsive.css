@@ -1,0 +1,294 @@
+/* ============================================================
+   RESPONSIVE · la app vive también en móvil
+   Estrategia: el layout de escritorio se mantiene intacto.
+   Por debajo de 1180px la sidebar pasa a cajón deslizante y las
+   rejillas colapsan a una columna. Por debajo de 760px se ajustan
+   topbar, tablas, calendario y面板 a touch.
+   ============================================================ */
+
+/* ---------- 1180px: sidebar como cajón ---------- */
+@media (max-width:1180px){
+  /* los KPIs y tarjetas no deben crecer por su contenido */
+  .kpis,.g-4,.g-3,.g-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .span-3{grid-column:span 2}
+  .kpi{min-width:0}
+  .kpi .stat{min-width:0}
+  .kpi .stat b{overflow:hidden;text-overflow:ellipsis}
+  .cal-cell .ev-dot{min-width:0}
+  .sidebar{
+    position:fixed;top:0;bottom:0;left:0;z-index:60;
+    width:16.5rem !important;
+    transform:translateX(-100%);
+    transition:transform .32s var(--ease),box-shadow .32s var(--ease);
+    box-shadow:none;
+    /* Sin backdrop-filter en modo cajon: un elemento con blur que se desplaza
+       deja un rastro smeary (el "difuminado" que se veia al abrir el menu).
+       Ademas es pointless aqui: hay un velo detras, no contenido real. */
+    background:rgba(9,9,11,.985);
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    padding-top:env(safe-area-inset-top)
+  }
+  /* visibility se cambia con retardo para que la animacion de salida se vea
+     entera; al abrir es inmediato. Sin esto el panel desaparece a media transicion. */
+  .sidebar{transition:transform .32s var(--ease),box-shadow .32s var(--ease),visibility 0s linear .32s}
+  .sidebar.in{transition:transform .32s var(--ease),box-shadow .32s var(--ease),visibility 0s}
+  .sidebar:not(.in){visibility:hidden}
+  body.nav-open .sidebar{transform:none;box-shadow:40px 0 90px -30px rgba(0,0,0,.95)}
+  /* sin transición alReduce y al cambiar de modo, para no medir a medias */
+  @media (prefers-reduced-motion:no-preference){
+    body.nav-open .sidebar{transition:transform .32s var(--ease),box-shadow .32s var(--ease)}
+  }
+  body.collapse .sidebar{width:16.5rem !important}
+  /* en collapsed no tiene sentido esconder los labels si el cajón está abierto */
+  body.collapse .nav-item{justify-content:flex-start;padding:.5rem .6rem}
+  body.collapse .nav-item .t,
+  body.collapse .nav-item .nav-badge,
+  body.collapse .nav-label,
+  body.collapse .brand-txt,
+  body.collapse .side-foot{display:revert}
+  body.collapse .collapse{display:none}
+
+  /* velo tras el cajón */
+  .nav-scrim{
+    position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.5);
+    backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+    opacity:0;pointer-events:none;transition:opacity .3s var(--ease)
+  }
+  body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
+
+  /* botón de menú en la topbar */
+  .nav-toggle{display:grid}
+
+  .crumbs b{font-size:.88rem}
+  .search{max-width:22rem}
+  .search-tx{font-size:.76rem}
+
+  /* rejillas de 3 columnas -> 2 */
+  .g-3{grid-template-columns:repeat(2,1fr)}
+  .span-3{grid-column:span 2}
+  .board{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cal-wrap{grid-template-columns:1fr}
+  .agenda{position:static}
+  .notes{grid-template-columns:12.5rem 1fr}
+}
+
+/* ---------- 900px: una columna + objetivos táctiles ----------
+   El corte llega a 900px para cubrir las ipads verticales: también son touch
+   y necesitan botones grandes aunque la rejilla aun mantenga dos columnas. */
+@media (max-width:900px){
+  /* los botones del pie del modal también son táctiles.
+     min-height NO gana a la altura fija de .btn: hay que forzar height. */
+  .modal-f{flex-wrap:wrap;gap:.5rem}
+  .modal-f .btn{flex:1 1 8rem;height:2.7rem;min-height:2.7rem}
+  .modal-f .btn.danger{flex:0 1 auto}
+  .modal-f .sp{display:none}
+
+  /* objetivos táctiles: nada por debajo de 40px */
+  .icon-btn{width:2.4rem;height:2.4rem}
+  .icon-btn.sm{width:2.2rem;height:2.2rem}
+  .avatar-btn{width:2.4rem;height:2.4rem}
+  .btn{height:2.4rem;padding:0 .9rem}
+  .btn.xs{height:2.4rem;padding:0 .75rem;font-size:.72rem}
+  .btn.icon,.btn.icon.xs{width:2.4rem}
+  .chk{width:1.3rem;height:1.3rem;border-radius:7px}
+  .nav-item{padding:.65rem .6rem;min-height:2.75rem}
+  .seg button{padding:.45rem .68rem;min-height:2rem}
+  .task-acts{opacity:1}
+  .task-acts .icon-btn{width:2.2rem;height:2.2rem}
+  .kcard .kacts,.agenda-ev .x{opacity:1}
+  .kcard .kacts .icon-btn{width:2.1rem;height:2.1rem}
+  .kcard .kmove{opacity:1}
+  .kcard .kmove button{width:2.3rem;height:2.3rem}
+  .kcard .kmove button svg{width:.95rem;height:.95rem}
+  .kcard .grip{display:none}
+  .task:hover,.kcard:hover{transform:none}
+  .task:active,.kcard:active{transform:scale(.995)}
+
+  /* switch: track mas alto + area tactil amplia con ::before */
+  .switch{width:3.2rem;height:2.15rem}
+  .switch::after{width:1.7rem;height:1.7rem}
+  .switch.on::after{transform:translateX(1.15rem)}
+  .switch::before{content:"";position:absolute;inset:-.35rem;border-radius:2rem}
+  .set-row{flex-wrap:wrap;gap:.5rem}
+  .set-row .ctl{width:100%;justify-content:space-between;min-height:2.6rem}
+  .set-row .ctl .range{width:100%!important;flex:1}
+  .set-row .ctl > button{flex:1;max-width:12rem}
+  .set-row .ctl .switch{flex:none;align-self:center;position:relative}
+  .dens-btns{width:100%}
+  .dens-btns button{flex:1;min-height:2.4rem}
+  .swatches{width:100%;justify-content:space-between}
+  .swatches .sw{width:2.6rem;height:2.6rem;min-width:2.6rem}
+  .set-row .ctl .pickrow{width:100%;flex-wrap:wrap}
+  .set-row .ctl .pickrow .pick{min-height:2.2rem;display:flex;align-items:center}
+  .modal .seg{overflow-x:auto;scrollbar-width:none}
+  .modal .seg::-webkit-scrollbar{display:none}
+  .modal .seg button{flex:0 0 auto}
+
+  /* ---------- rejillas ---------- */
+  .view{padding:1rem 1.1rem 4.5rem}
+  .g-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-3,.g-2{grid-template-columns:1fr}
+  .span-2,.span-3{grid-column:span 1}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .board{grid-template-columns:1fr}
+  .col{max-height:none}
+  .col-b{min-height:3rem}
+
+  /* barra de filtros: los segmentos hacen scroll horizontal en vez de empujar */
+  .toolbar{flex-wrap:wrap;row-gap:.5rem}
+  .toolbar .seg{flex:1 1 0;min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;-ms-overflow-style:none}
+  .toolbar .seg::-webkit-scrollbar{display:none}
+  .toolbar .seg button{flex:0 0 auto;white-space:nowrap}
+  /* cada seg en su propia linea si no cabe: nada se sale */
+  .toolbar #prioSeg,.toolbar #rangeSeg{flex:1 1 100%}
+  .toolbar > .search-i{flex:1 1 100%;order:-1;min-width:0}
+  .toolbar .select{flex:1 1 8rem;min-width:0;max-width:100%}
+  .toolbar > .btn{flex:1 1 auto;min-width:0}
+  /* el nombre del proyecto/aviso puede ser largo: que no empuje */
+  .toolbar .grow{min-width:0}
+  .toolbar .grow .muted{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* cabecera del calendario: título y acciones en dos filas */
+  .cal-wrap .card>.card-h{flex-wrap:wrap;row-gap:.5rem}
+  .cal-wrap .card>.card-h .cal-nav{flex:1 1 100%;justify-content:flex-start;min-width:0}
+  .cal-wrap .card>.card-h .cal-nav h3{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .cal-grid{font-size:.9em}
+  /* la tarjeta debe poder encogerse por debajo del ancho de su contenido */
+  .cal-wrap>*{min-width:0}
+  .cal-wrap .card{min-width:0}
+  .cal-wrap .card>.card-h{min-width:0}
+  .cal-wrap .card>.card-h>*{min-width:0}
+  .cal-nav .btn{min-width:0;flex:0 0 auto}
+  .card-h .hint{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;max-width:100%}
+
+  /* hero apilado */
+  .hero{grid-template-columns:1fr;gap:1rem;padding:1.1rem}
+  .hero h1{font-size:1.32rem}
+  .hero .ring{width:5rem;height:5rem;justify-self:start}
+  .hero::after{display:none}
+
+  /* notas: lista y editor apilados con scroll propio */
+  .notes{grid-template-columns:1fr;height:auto;gap:.8rem}
+  .notes-list{max-height:19rem}
+  .note-edit{min-height:24rem}
+
+  /* modal a pantalla casi completa */
+  .modal-root{padding:.7rem}
+  .modal,.modal.wide{width:100%;max-height:92vh}
+
+  .palette-wrap{padding-top:4vh}
+  .palette{width:100%;max-width:calc(100vw - 1.4rem)}
+
+  .panel{width:min(22.5rem,100vw)}
+}
+
+/* ---------- 760px: topbar compacta y touch ---------- */
+@media (max-width:760px){
+  /* el scroll del tablero depende de touch-action:pan-y en las tarjetas */
+  .col-b{touch-action:pan-y}
+
+  /* iOS hace zoom al enfocar cualquier campo con letra < 16px: hay que
+     subir el tamaño de los inputs aunque visualmente parezca grande */
+  .input,.textarea,.select,.search-i input,.note-title,.note-body .ntext,.palette input,.pal-input input,
+  input[type="range"]{
+    font-size:16px!important;line-height:1.4
+  }
+  .input,.select{height:2.6rem}
+  .textarea{min-height:5.5rem}
+  /* el range necesita mas alto para seguir siendo usable con el dedo */
+  input[type="range"]{height:2.4rem;background:none}
+
+  /* zona segura: el notch no debe cortar la topbar */
+  .topbar{
+    height:calc(3.35rem + env(safe-area-inset-top));
+    padding-top:env(safe-area-inset-top);
+    gap:.55rem;padding-left:.7rem;padding-right:.7rem
+  }
+  .topbar .search{display:none}
+  .crumbs b{font-size:.85rem}
+  .crumbs small{font-size:.63rem}
+  .clock b{font-size:.78rem}
+  .clock span{font-size:.6rem}
+
+  .task,.kcard,.lst-row{padding:.7rem .6rem}
+  .card-h{padding:.8rem .85rem}
+  .card-b{padding:.85rem}
+
+  /* calendario táctil */
+  .cal-cell{min-height:3.5rem;padding:.25rem .2rem}
+  .cal-cell .dn{width:1.5rem;height:1.5rem;font-size:.72rem}
+  .cal-dow{font-size:.56rem;padding:.4rem .1rem}
+  .ev-dot{font-size:.58rem;padding:.1rem .2rem}
+  .ev-dot:not(.more){display:none}   /* en móvil solo el punto de color */
+  .ev-dot.more{display:flex}
+  .cal-cell::after{
+    content:"";position:absolute;left:.28rem;right:.28rem;bottom:.22rem;height:.2rem;border-radius:2px;
+    background:var(--accent);opacity:0
+  }
+  .cal-cell.has-ev::after{opacity:.85}
+  .cal-cell.has-today-ev::after{background:var(--warn);box-shadow:0 0 6px var(--warn)}
+
+  .frow,.frow-3{grid-template-columns:1fr}
+  .modal-b{padding:.9rem}
+  .heat i{border-radius:2px}
+  .donut{width:7rem!important;height:7rem!important}
+
+  /* toasts a lo ancho, sin cortar */
+  .toasts{left:.6rem;right:.6rem;bottom:.6rem}
+  .toast{max-width:none;width:100%}
+
+  .agenda-ev{padding:.55rem .5rem}
+  .hbar-row{grid-template-columns:4.6rem 1fr 2rem}
+  .play-none{display:none}
+}
+
+/* ---------- 480px: repaso final ---------- */
+@media (max-width:480px){
+  :root{--gap:.75rem;--pad:.9rem;--r:12px;--r-sm:9px}
+  .view{padding:.85rem .8rem 5rem}
+  .topbar{gap:.4rem;padding:0 .55rem}
+  .kpis{grid-template-columns:1fr 1fr;gap:.6rem}
+  .kpi{padding:.8rem .75rem;gap:.4rem}
+  .kpi .stat b{font-size:1.3rem}
+  .kpi .ico{width:1.6rem;height:1.6rem}
+  .stat b{font-size:1.35rem}
+  .hero{padding:.95rem}
+  .hero h1{font-size:1.16rem}
+  .hero-acts{flex-wrap:wrap}
+  .hero-acts .btn{flex:1;min-width:8rem}
+  .card-h h3{font-size:.74rem}
+  .brand-mark{width:1.8rem;height:1.8rem;font-size:.82rem}
+  .toolbar{padding:.6rem;gap:.45rem}
+  .toolbar .seg{flex:1;overflow-x:auto;scrollbar-width:none}
+  .toolbar .seg::-webkit-scrollbar{display:none}
+  .toolbar .select{flex:1;min-width:7rem}
+  .notes-list{max-height:16rem}
+  .note-foot{gap:.35rem}
+  .cal-wrap{gap:.7rem}
+}
+
+/* ---------- barra de tareas en móvil (touch) ---------- */
+@media (hover:none) and (pointer:coarse){
+  .chk:hover{transform:none}
+  .star:hover{transform:none}
+  .task:hover,.lst-row:hover,.card.hoverable:hover{background:var(--panel);transform:none}
+  .kcard:hover{background:var(--panel-2);transform:none}
+  .agenda-ev:hover{background:var(--panel);transform:none}
+  .lst-row:hover{background:transparent}
+  /* el arrastre con dedo no debe romper el scroll: se usa el menú de la tarjeta */
+  .kcard{touch-action:pan-y}
+}
+
+/* ---------- respeto por reduce-motion también en móvil ---------- */
+@media (prefers-reduced-motion:reduce){
+  .sidebar,.nav-scrim{transition:none!important}
+}
+
+/* ---------- impresión ---------- */
+@media print{
+  .sidebar,.topbar,.panel,.toasts,.palette-wrap,.modal-root,.too-small,.nav-scrim{display:none!important}
+  body,.app{display:block;height:auto;overflow:visible;background:#fff;color:#000}
+  .view{overflow:visible;padding:0}
+  .card{border:1px solid #ccc;background:#fff;box-shadow:none;page-break-inside:avoid}
+}
