@@ -1373,6 +1373,23 @@ function boot() {
   $('.icon-btn.sm[data-act="notif-close"]').innerHTML = icon('x');
   $('#navToggle').innerHTML = icon('menu');
   $('#mobileSearch').innerHTML = icon('search');
+  $('#cloudBtn').innerHTML = icon('cloud');
+
+  // nube: restaurar sesión previa y sincronizar en segundo plano.
+  // nunca bloquea el arranque: si falla, la app sigue en local.
+  if (CLOUD.restore()) {
+    paintCloud();
+    CLOUD.sync().then(r => {
+      if (r === 'downloaded') {
+        render(true);
+        toast('Datos actualizados desde la nube', '', 'info', 2600);
+      } else if (r === 'error') {
+        toast('Sin conexión con la nube', 'Se guarda en local', 'warn', 3600);
+      }
+    });
+  } else {
+    paintCloud();
+  }
 
   // cajón móvil: velo, gesto de arrastre y sincronización con el ancho
   $('#navScrim').addEventListener('click', closeNav);

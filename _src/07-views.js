@@ -839,7 +839,23 @@ VIEWS.ajustes = function () {
       </div>
 
       <div class="card">
-        <div class="card-h"><h3>${icon('list')}Resumen</h3></div>
+              <div class="card-h"><h3>${icon('cloud')}Nube</h3><span class="hint">${CLOUD.session ? 'Conectado' : 'Sin conectar'}</span></div>
+              <div class="card-b" style="padding:.4rem 1rem">
+                ${row('Sincronización', CLOUD.session
+                  ? 'Tus datos se guardan en la nube y en este dispositivo'
+                  : 'Conéctate para tener los datos en todos tus dispositivos',
+                  `<button class="btn xs ${CLOUD.session ? '' : 'primary'}" data-act="cloud-manage">${icon('cloud')}${CLOUD.session ? 'Gestionar' : 'Conectar'}</button>`)}
+                ${CLOUD.lastSync ? row('Última subida', relTime(CLOUD.lastSync),
+                  `<button class="btn xs" data-act="cloud-sync">${icon('refresh')}Ahora</button>`) : ''}
+                ${CLOUD.state === 'error' ? `<div class="set-row"><div class="lb"><b style="color:#ffb3bf">Sin conexión</b><small>${esc(CLOUD.lastError)}</small></div></div>` : ''}
+                <p class="muted" style="font-size:.69rem;line-height:1.55;padding:.5rem 0">
+                  Si algo falla, la app <b>nunca se rompe</b>: sigue guardando todo en el navegador.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-h"><h3>${icon('list')}Resumen</h3></div>
         <div class="card-b">
           <div class="grid g-2" style="gap:.5rem">
             ${[['Tareas', DB.tasks.length], ['Eventos', DB.events.length], ['Proyectos', DB.projects.length], ['Notas', DB.notes.length]]

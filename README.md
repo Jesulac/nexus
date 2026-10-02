@@ -45,8 +45,46 @@ la dan las sombras y los bordes, no las mezclas de color.
 ## Datos
 
 Todo se guarda en `localStorage` bajo la clave `nexus.v1` y se restaura al
-volver a abrir. Si hay una nube configurada, se sincroniza con ella y el
-indicador de la topbar muestra el estado.
+volver a abrir.
+
+### Nube (Supabase)
+
+Puedes conectar la app a una nube para tener los datos en todos tus
+dispositivos. El botón de nube está en la topbar (icono de nube) y también
+en **Ajustes → Nube**.
+
+- Login con **email y contraseña** (Supabase Auth). Nadie más puede leer ni
+  escribir tus datos.
+- La sincronización es de **estado completo**: tareas, eventos, proyectos,
+  notas, notificaciones, actividad y ajustes.
+- **Resolución de conflictos por fecha**: gana la versión más reciente, así que
+  si editas en el móvil y en el portátil, no se pierde nada en silencio.
+- **Si la nube falla, la app no se rompe.** Todo sigue guardándose en el
+  navegador y se reintenta al volver a conectar.
+
+Sin conectar la nube, la app funciona igual: es completamente opcional.
+
+## Despliegue
+
+| Dónde | URL |
+|---|---|
+| GitHub Pages | https://jesulac.github.io/nexus/ |
+| Vercel | https://nexus-control-teal.vercel.app |
+
+Como es estático puro, ambos sirven el mismo `index.html` sin configuración
+de build.
+
+## Estructura
+
+```
+index.html      ← el archivo final (se genera)
+404.html        ← GitHub Pages: rutas internas
+build.sh        ← ensambla index.html desde _src/
+_src/           ← fragmentos fuente
+```
+
+El orden de ensamblado importa: `09-cloud.js` va **antes** de `08-ui.js`
+porque este último contiene `boot()`, que ya usa el módulo de nube.
 
 ## Desarrollo
 

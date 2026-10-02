@@ -13,8 +13,10 @@ OUT="index.html"
   cat _src/07-tabbar.css
   cat _src/03-body.html
   cat _src/06-core.js
+  cat _src/09-cloud.js
   cat _src/07-views.js
   cat _src/08-ui.js
+  cat _src/10-cloud-ui.js
   printf '</script>\n</body>\n</html>\n'
 } > "$OUT"
 

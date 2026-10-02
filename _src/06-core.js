@@ -7,6 +7,13 @@
 const App = {};
 window.NEXUS = App;   // superficie de depuración / verificación
 
+/* El modulo de nube (09-cloud.js) se ensambla justo despues de este bloque y
+   se engancha aqui, de modo que NEXUS.cloud siempre apunta al objeto real. */
+Object.defineProperty(App, 'cloud', {
+  get: () => window.NEXUS_CLOUD,
+  configurable: true
+});
+
 /* ---------- 1. utilidades ---------- */
 const $  = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -112,6 +119,7 @@ const ICON = {
   book: I('<path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19v18H5.5A1.5 1.5 0 0 1 4 19.5z"/><path d="M4 17h15"/>'),
   palette: I('<path d="M12 3a9 9 0 1 0 0 18c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6h1.6a4.6 4.6 0 0 0 4.6-4.6C20.6 6 16.7 3 12 3Z"/><circle cx="7.8" cy="11.4" r="1.1" fill="currentColor" stroke="none"/><circle cx="11" cy="7.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="15.6" cy="8.8" r="1.1" fill="currentColor" stroke="none"/>'),
   moon: I('<path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/>'),
+  cloud: I('<path d="M7.2 18.5a4.7 4.7 0 0 1-.4-9.4 5.8 5.8 0 0 1 11.1 1.5 4 4 0 0 1-.7 7.9z"/>'),
   volume: I('<path d="M4 9.5h3.2L12 5.4v13.2L7.2 14.5H4z"/><path d="M15.6 9.4a3.6 3.6 0 0 1 0 5.2M18.2 6.6a7.3 7.3 0 0 1 0 10.8"/>'),
   grid: I('<rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/>'),
   list: I('<path d="M8.5 6.5h12M8.5 12h12M8.5 17.5h12M3.6 6.5h.01M3.6 12h.01M3.6 17.5h.01"/>'),
@@ -148,8 +156,9 @@ let saveTimer = null;
 function save() {
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
-    try { localStorage.setItem(KEY, JSON.stringify(DB)); }
-    catch (e) { console.warn('[nexus] persistencia falló', e); }
+    try { localStorage.setItem(KEY, JSON.stringify(DB)); } catch (e) { console.warn('[nexus] persistencia falló', e); }
+    // si hay nube conectada, se sube el cambio (debounced dentro de autosync)
+    if (window.CLOUD && CLOUD.session) CLOUD.autosync();
   }, 140);
 }
 function saveNow() {
