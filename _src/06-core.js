@@ -143,7 +143,7 @@ const icon = (n, cls = '') => ICON[n] ? ICON[n].replace('<svg ', `<svg class="${
 const KEY = 'nexus.v1';
 const DEFAULTS = {
   blur: 18, scale: 100, animations: true, sound: false,
-  oled: true, density: 'normal', accent: 'blue', collapsed: false,
+  oled: true, density: 'normal', , collapsed: false,
   greetingName: 'Jesús'
 };
 

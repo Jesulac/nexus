@@ -4,14 +4,14 @@
 .board{display:grid;grid-template-columns:repeat(4,minmax(13.5rem,1fr));gap:var(--gap);align-items:start}
 .col{display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--stroke);
   background:rgba(255,255,255,.016);max-height:calc(100vh - 12.5rem);transition:border-color var(--dur),background var(--dur)}
-.col.over{border-color:color-mix(in srgb,var(--txt) 46%,transparent);background:color-mix(in srgb,var(--txt) 6%,transparent)}
+.col.over{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.12)}
 .col-h{display:flex;align-items:center;gap:.45rem;padding:.65rem .75rem;border-bottom:1px solid var(--stroke);flex:none}
 .col-h .cd{width:.42rem;height:.42rem;border-radius:50%;background:var(--cc,var(--txt));box-shadow:0 0 9px var(--cc,var(--txt))}
 .col-h b{font-size:.74rem;font-weight:650;flex:1;letter-spacing:.01em}
 .col-h .n{font-size:.71rem;color:var(--txt-3);background:var(--panel-2);border-radius:20px;padding:.06rem .34rem;
   font-variant-numeric:tabular-nums;font-weight:650}
 .col-b{flex:1;overflow-y:auto;padding:.5rem;display:flex;flex-direction:column;gap:.42rem;min-height:4.5rem}
-.col-b.over{background:color-mix(in srgb,var(--txt) 5%,transparent);border-radius:var(--r-xs)}
+.col-b.over{background:rgba(255,255,255,.12);border-radius:var(--r-xs)}
 .kcard{
   border-radius:var(--r-sm);border:1px solid var(--stroke);background:var(--panel-2);padding:.58rem .62rem;
   display:flex;flex-direction:column;gap:.4rem;cursor:grab;position:relative;user-select:none;
@@ -26,7 +26,7 @@
 /* feedback de "pulsacion larga en curso" */
 .kcard.pressing{
   transform:scale(.97);
-  border-color:color-mix(in srgb,var(--txt) 55%,transparent);
+  border-color:rgba(255,255,255,.12);
   background:var(--panel-3);
   box-shadow:0 10px 30px -14px rgba(0,0,0,.95)
 }
@@ -35,7 +35,7 @@
 .kcard:hover{border-color:var(--stroke-2);background:var(--panel-3);transform:translateY(-1px);box-shadow:0 8px 20px -12px rgba(0,0,0,.9)}
 .kcard:active{cursor:grabbing}
 .kcard.drag-ghost{position:fixed;z-index:900;width:var(--kw);pointer-events:none;box-shadow:var(--shadow-lg);
-  border-color:color-mix(in srgb,var(--txt) 50%,transparent);background:#121216;transform:rotate(1.6deg) scale(1.02);cursor:grabbing}
+  border-color:rgba(255,255,255,.12);background:#121216;transform:rotate(1.6deg) scale(1.02);cursor:grabbing}
 /* la original se atenúa solo un poco: si baja mucho, al soltar parece un flash */
 .kcard.ghosting{opacity:.58;transition:opacity .18s ease}
 .kcard h5{font-size:.775rem;font-weight:600;line-height:1.35;display:flex;gap:.35rem;align-items:flex-start}
@@ -64,12 +64,12 @@
 @media (hover:none){
   .kcard .kacts,.kcard .kmove{opacity:1}
 }
-.kcard.blocked{border-color:color-mix(in srgb,var(--bad) 34%,transparent);
-  background:color-mix(in srgb,var(--bad) 7%,transparent)}
+.kcard.blocked{border-color:color-mix(in srgb,rgba(255,255,255,.85) 34%,transparent);
+  background:color-mix(in srgb,rgba(255,255,255,.85) 7%,transparent)}
 .kcard.done-card{opacity:.62}
 .kcard.done-card h5 .t{text-decoration:line-through;color:var(--txt-3)}
-.ph{height:2.1rem;border-radius:var(--r-sm);border:1.5px dashed color-mix(in srgb,var(--txt) 40%,transparent);
-  background:color-mix(in srgb,var(--txt) 5%,transparent);flex:none}
+.ph{height:2.1rem;border-radius:var(--r-sm);border:1.5px dashed rgba(255,255,255,.12);
+  background:rgba(255,255,255,.12);flex:none}
 
 /* ============================================================
    notas
@@ -92,7 +92,7 @@
 .note-item.on{background:var(--panel-3);border-color:var(--stroke-2)}
 .note-item b{font-size:.765rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   display:flex;align-items:center;gap:.3rem}
-.note-item b svg{width:.7rem;height:.7rem;flex:none;color:var(--warn);fill:var(--warn);stroke:var(--warn)}
+.note-item b svg{width:.7rem;height:.7rem;flex:none;color:rgba(255,255,255,.85);fill:rgba(255,255,255,.85);stroke:rgba(255,255,255,.85)}
 .note-item p{font-size:.74rem;color:var(--txt-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.4}
 .note-item time{font-size:.76rem;color:var(--txt-4)}
 .note-edit{display:flex;flex-direction:column;overflow:hidden}
@@ -133,9 +133,9 @@
 .heat{display:grid;grid-template-columns:repeat(auto-fill,minmax(.72rem,1fr));gap:.2rem}
 .heat i{aspect-ratio:1;border-radius:2.5px;background:rgba(255,255,255,.05);transition:transform var(--dur-fast),transform-origin center}
 .heat i:hover{transform:scale(1.42)}
-.heat i[data-l="1"]{background:color-mix(in srgb,var(--txt) 24%,transparent)}
-.heat i[data-l="2"]{background:color-mix(in srgb,var(--txt) 48%,transparent)}
-.heat i[data-l="3"]{background:color-mix(in srgb,var(--txt) 74%,transparent)}
+.heat i[data-l="1"]{background:rgba(255,255,255,.12)}
+.heat i[data-l="2"]{background:rgba(255,255,255,.12)}
+.heat i[data-l="3"]{background:rgba(255,255,255,.12)}
 .heat i[data-l="4"]{background:var(--txt);box-shadow:0 0 8px -1px var(--txt)}
 
 /* ============================================================
@@ -166,9 +166,9 @@
 .pal-item .tx small{font-size:.74rem;color:var(--txt-3);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pal-item .tx b mark{background:none;color:var(--txt);font-weight:700}
 .pal-item .rt{font-size:.7rem;color:var(--txt-4);flex:none}
-.pal-item.on{background:color-mix(in srgb,var(--txt) 16%,transparent);
-  box-shadow:0 0 0 1px color-mix(in srgb,var(--txt) 26%,transparent) inset}
-.pal-item.on .ic{background:color-mix(in srgb,var(--txt) 24%,transparent);color:#fff;border-color:transparent}
+.pal-item.on{background:rgba(255,255,255,.12);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12) inset}
+.pal-item.on .ic{background:rgba(255,255,255,.12);color:#fff;border-color:transparent}
 .pal-item.on .rt{color:var(--txt-2)}
 .pal-foot{display:flex;align-items:center;gap:.85rem;padding:.5rem .85rem;border-top:1px solid var(--stroke);
   font-size:.72rem;color:var(--txt-4);background:rgba(0,0,0,.25)}
@@ -240,12 +240,12 @@
 .pick:hover{background:var(--panel-2);color:var(--txt)}
 .pick.on{background:color-mix(in srgb,var(--pc,var(--txt)) 20%,transparent);
   border-color:color-mix(in srgb,var(--pc,var(--txt)) 45%,transparent);color:#fff}
-.pick.on.p-alta{--pc:var(--bad)}.pick.on.p-media{--pc:var(--warn)}.pick.on.p-baja{--pc:var(--ok)}
+.pick.on.p-alta{--pc:rgba(255,255,255,.85)}.pick.on.p-media{--pc:rgba(255,255,255,.85)}.pick.on.p-baja{--pc:rgba(255,255,255,.85)}
 .tagpick{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center}
 .tagpick .tg{padding:.3rem .55rem;border-radius:6px;font-size:.71rem;font-weight:600;cursor:pointer;
   background:var(--panel);border:1px solid var(--stroke);color:var(--txt-3);transition:all var(--dur-fast)}
 .tagpick .tg:hover{background:var(--panel-2);color:var(--txt)}
-.tagpick .tg.on{color:#fff;background:color-mix(in srgb,var(--txt) 22%,transparent);border-color:color-mix(in srgb,var(--txt) 40%,transparent)}
+.tagpick .tg.on{color:#fff;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.12)}
 .tinput{flex:1;min-width:5rem}
 .range-row{display:flex;align-items:center;gap:.6rem}
 .range-row .val{font-size:.76rem;font-weight:650;min-width:2.4rem;text-align:right;font-variant-numeric:tabular-nums}
@@ -337,11 +337,11 @@
 .card.ghosting{opacity:.6;transition:opacity .18s ease}
 .card.drag-ghost{
   position:fixed;z-index:900;pointer-events:none;margin:0;
-  box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--txt) 45%,transparent);
+  box-shadow:var(--shadow-lg);border-color:rgba(255,255,255,.12);
   background:#0e0f12;transition:none!important
 }
 .card-ghost-slot{
-  border:1.5px dashed color-mix(in srgb,var(--txt) 38%,transparent);background:transparent;
+  border:1.5px dashed rgba(255,255,255,.12);background:transparent;
   box-shadow:none;opacity:.85;
 }
 .card-ghost-slot::before{opacity:0}
