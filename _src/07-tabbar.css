@@ -14,7 +14,7 @@
   display:none;
   position:fixed;left:0;right:0;bottom:0;z-index:64;
   padding:5px max(.4rem,env(safe-area-inset-right)) max(5px,env(safe-area-inset-bottom)) max(.4rem,env(safe-area-inset-left));
-  background:rgba(7,7,9,.9);
+  background:rgba(0,0,0,.92);
   border-top:1px solid var(--stroke);
   backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);
 }

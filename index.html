@@ -96,6 +96,17 @@ body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
 @keyframes slideUp{from{transform:translateY(1.5rem);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @media (max-width:374px){html{font-size:calc(15px * var(--fs))}.topbar{padding:0 .75rem}}
+
+/* microinteracciones táctiles */
+@media (hover:none) and (pointer:coarse){
+  .nav-item:active{transform:scale(.97);background:rgba(255,255,255,.12)}
+  .tab:active{transform:scale(.92)}
+  .btn:active{transform:scale(.96);background:var(--panel-3)}
+  .card:active{transform:scale(.98)}
+  .kcard:active{transform:scale(.98)}
+  .task:active{transform:scale(.98);background:var(--panel-2)}
+  .note-item:active{transform:scale(.98);background:var(--panel-2)}
+}
 /* ============================================================
    primitivos
    ============================================================ */
@@ -801,7 +812,7 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
     /* Sin backdrop-filter en modo cajon: un elemento con blur que se desplaza
        deja un rastro smeary (el "difuminado" que se veia al abrir el menu).
        Ademas es pointless aqui: hay un velo detras, no contenido real. */
-    background:rgba(9,9,11,.985);
+    background:rgba(0,0,0,.96);
     backdrop-filter:none;-webkit-backdrop-filter:none;
     padding-top:env(safe-area-inset-top)
   }
@@ -1086,7 +1097,7 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
   display:none;
   position:fixed;left:0;right:0;bottom:0;z-index:64;
   padding:5px max(.4rem,env(safe-area-inset-right)) max(5px,env(safe-area-inset-bottom)) max(.4rem,env(safe-area-inset-left));
-  background:rgba(7,7,9,.9);
+  background:rgba(0,0,0,.92);
   border-top:1px solid var(--stroke);
   backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);
 }
@@ -1229,9 +1240,9 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
 <div class="too-small">
   <div class="ts-card">
     <div class="ts-mark">NEXUS</div>
-    <h1>Requiere escritorio</h1>
-    <p>Esta aplicación está optimizada para pantallas de <b>1366×768</b> o mayores y no mantiene una versión móvil.</p>
-    <p class="ts-dim">Amplía la ventana o usa un monitor para continuar.</p>
+    <h1>Modo móvil</h1>
+    <p>Esta app funciona mejor en pantallas mayores, pero sigue usable aquí.</p>
+    <p class="ts-dim">Puedes usar navegación, tareas, calendario y nube.</p>
   </div>
 </div>
 

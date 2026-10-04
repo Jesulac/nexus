@@ -80,3 +80,14 @@ body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
 @keyframes slideUp{from{transform:translateY(1.5rem);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @media (max-width:374px){html{font-size:calc(15px * var(--fs))}.topbar{padding:0 .75rem}}
+
+/* microinteracciones táctiles */
+@media (hover:none) and (pointer:coarse){
+  .nav-item:active{transform:scale(.97);background:rgba(255,255,255,.12)}
+  .tab:active{transform:scale(.92)}
+  .btn:active{transform:scale(.96);background:var(--panel-3)}
+  .card:active{transform:scale(.98)}
+  .kcard:active{transform:scale(.98)}
+  .task:active{transform:scale(.98);background:var(--panel-2)}
+  .note-item:active{transform:scale(.98);background:var(--panel-2)}
+}

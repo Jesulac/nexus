@@ -24,7 +24,7 @@
     /* Sin backdrop-filter en modo cajon: un elemento con blur que se desplaza
        deja un rastro smeary (el "difuminado" que se veia al abrir el menu).
        Ademas es pointless aqui: hay un velo detras, no contenido real. */
-    background:rgba(9,9,11,.985);
+    background:rgba(0,0,0,.96);
     backdrop-filter:none;-webkit-backdrop-filter:none;
     padding-top:env(safe-area-inset-top)
   }
