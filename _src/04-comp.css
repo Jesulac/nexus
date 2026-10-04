@@ -64,10 +64,10 @@ button.chip:hover{background:var(--panel-3);color:var(--txt)}
 .chip.on{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.12);color:#fff}
 .chip .dot{width:.34rem;height:.34rem;border-radius:50%;background:currentColor}
 .chip svg{width:.74rem;height:.74rem;flex:none}
-.chip.p-alta{color:#ffb3bf;background:color-mix(in srgb,rgba(255,255,255,.85) 13%,transparent);border-color:color-mix(in srgb,rgba(255,255,255,.85) 26%,transparent)}
-.chip.p-media{color:#ffd99a;background:color-mix(in srgb,rgba(255,255,255,.85) 12%,transparent);border-color:color-mix(in srgb,rgba(255,255,255,.85) 25%,transparent)}
-.chip.p-baja{color:#a9e8c9;background:color-mix(in srgb,rgba(255,255,255,.85) 12%,transparent);border-color:color-mix(in srgb,rgba(255,255,255,.85) 24%,transparent)}
-.chip.p-alta .dot,.chip.p-media .dot,.chip.p-baja .dot{box-shadow:0 0 7px currentColor}
+.chip.p-alta{color:var(--txt);background:var(--panel-3);border-color:var(--stroke-3);font-weight:800}
+.chip.p-media{color:var(--txt-2);background:var(--panel-2);border-color:var(--stroke-2)}
+.chip.p-baja{color:var(--txt-3);background:var(--panel);border-color:var(--stroke)}
+.chip.p-alta .dot,.chip.p-media .dot,.chip.p-baja .dot{box-shadow:none}
 
 .seg{display:inline-flex;padding:2px;border-radius:9px;background:var(--panel);border:1px solid var(--stroke);gap:2px}
 .seg button{padding:.32rem .62rem;border-radius:7px;font-size:.78rem;font-weight:700;color:var(--txt-3);transition:background var(--dur-fast),color var(--dur-fast)}
