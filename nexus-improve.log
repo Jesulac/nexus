@@ -24,5 +24,21 @@ Sin cambios nuevos
 === NEXUS mejora #7 19:51:01 ===
 warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
 Sin cambios nuevos
-rking copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
-[2026-10-04 19:50:33] Sin cambios nuevos
+
+=== NEXUS mejora #8 19:53:02 ===
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+Sin cambios nuevos
+
+=== NEXUS mejora #9 19:55:04 ===
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+Sin cambios nuevos
+n cambios nuevos
+
+[2026-10-04 19:54:35] === NEXUS continuous improve #8 ===
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+[2026-10-04 19:54:35] Sin cambios nuevos
+
+[2026-10-04 19:56:15] === NEXUS continuous improve #9 ===
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_src/04-comp.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
