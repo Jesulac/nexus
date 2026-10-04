@@ -48,10 +48,12 @@
   body.collapse .side-foot{display:revert}
   body.collapse .collapse{display:none}
 
-  /* velo tras el cajón */
+  /* Velo tras el cajón.
+     SIN backdrop-filter a proposito: un elemento fijo con blur difumina
+     toda la pantalla al abrir el menu y se lee como "todo borroso".
+     Con negro algo mas opaco el desvanecido se percibe igual de bien. */
   .nav-scrim{
-    position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.5);
-    backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+    position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.62);
     opacity:0;pointer-events:none;transition:opacity .3s var(--ease)
   }
   body.nav-open .nav-scrim{opacity:1;pointer-events:auto}

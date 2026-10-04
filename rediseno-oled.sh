@@ -1,3 +1,10 @@
+#!/bin/bash
+# Transformación completa NEXUS a OLED blanco/negro puro móvil-first
+
+cd _src
+
+# 1. Tokens base OLED puro
+cat > 02-style.css << 'EOF1'
 :root{--bg:#000;--panel:rgba(255,255,255,.04);--panel-2:rgba(255,255,255,.06);
 --panel-3:rgba(255,255,255,.09);--stroke:rgba(255,255,255,.10);
 --stroke-2:rgba(255,255,255,.15);--stroke-3:rgba(255,255,255,.22);
@@ -80,3 +87,29 @@ body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
 @keyframes slideUp{from{transform:translateY(1.5rem);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @media (max-width:374px){html{font-size:calc(15px * var(--fs))}.topbar{padding:0 .75rem}}
+EOF1
+
+echo "✓ 02-style.css → OLED tokens creados"
+
+# 2. Limpiar TODO componente de colores
+for f in 04-comp.css 05-comp2.css; do
+  sed -i 's/var(--accent)/var(--txt)/g' "$f"
+  sed -i 's/color-mix[^)]*var(--accent)[^)]*)/rgba(255,255,255,.12)/g' "$f"
+  sed -i 's/--ok:#4ade80/--ok:var(--txt)/g' "$f"
+  sed -i 's/--warn:#fbbf24/--warn:var(--txt)/g' "$f"
+  sed -i 's/--bad:#fb7185/--bad:var(--txt)/g' "$f"
+  sed -i 's/--info:#38bdf8/--info:var(--txt)/g' "$f"
+  sed -i '/backdrop-filter:blur/d' "$f"
+  sed -i '/-webkit-backdrop-filter:blur/d' "$f"
+done
+
+echo "✓ Componentes limpios de colores"
+
+cd ..
+bash build.sh
+echo ""
+echo "=== NEXUS OLED BLANCO/NEGRO PURO ==="
+echo "✓ Sin acentos de color"
+echo "✓ Sin degradados"
+echo "✓ Sin blur innecesario"
+echo "✓ Móvil-first optimizado"
