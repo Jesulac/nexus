@@ -64,12 +64,11 @@
 @media (hover:none){
   .kcard .kacts,.kcard .kmove{opacity:1}
 }
-.kcard.blocked{border-color:color-mix(in srgb,rgba(255,255,255,.85) 34%,transparent);
-  background:color-mix(in srgb,rgba(255,255,255,.85) 7%,transparent)}
+.kcard.blocked{border-color:var(--stroke-3);background:var(--panel-3)}
 .kcard.done-card{opacity:.62}
 .kcard.done-card h5 .t{text-decoration:line-through;color:var(--txt-3)}
-.ph{height:2.1rem;border-radius:var(--r-sm);border:1.5px dashed rgba(255,255,255,.12);
-  background:rgba(255,255,255,.12);flex:none}
+.ph{height:2.1rem;border-radius:var(--r-sm);border:1.5px dashed var(--stroke-2);
+  background:var(--panel-2);flex:none}
 
 /* ============================================================
    notas
@@ -145,7 +144,7 @@
   animation:fadeIn .2s var(--ease)}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .palette{width:36rem;max-width:calc(100vw - 3rem);border-radius:1.1rem;overflow:hidden;
-  background:rgba(14,15,18,.86);border:1px solid var(--stroke-2);box-shadow:var(--shadow-lg),0 0 0 1px rgba(255,255,255,.05) inset;
+  background:rgba(0,0,0,.96);border:1px solid var(--stroke-2);box-shadow:var(--shadow-lg),0 0 0 1px rgba(255,255,255,.05) inset;
   animation:palIn .3s var(--ease)}
 @keyframes palIn{from{opacity:0;transform:translateY(-16px) scale(.965)}to{opacity:1;transform:none}}
 .pal-input{display:flex;align-items:center;gap:.65rem;padding:.9rem 1rem;border-bottom:1px solid var(--stroke)}
