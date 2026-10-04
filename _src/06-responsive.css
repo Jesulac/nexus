@@ -205,7 +205,7 @@
   .topbar{
     height:calc(3.35rem + env(safe-area-inset-top));
     padding-top:env(safe-area-inset-top);
-    gap:.55rem;padding-left:.7rem;padding-right:.7rem
+    gap:.65rem;padding-left:.7rem;padding-right:.7rem
   }
   .topbar .search{display:none}
   .crumbs b{font-size:.85rem}

@@ -17,7 +17,7 @@
 .card.hoverable:hover{border-color:var(--stroke-2);background:var(--panel-2);transform:translateY(-2px);box-shadow:var(--glow),var(--shadow)}
 .card.hoverable:active{transform:translateY(0) scale(.996)}
 .card-h{display:flex;align-items:center;gap:.6rem;padding:.85rem 1rem;border-bottom:1px solid var(--stroke);min-width:0}
-.card-h h3{font-size:.78rem;font-weight:650;letter-spacing:.02em;flex:1;display:flex;align-items:center;gap:.45rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-h h3{font-size:.84rem;font-weight:650;letter-spacing:.02em;flex:1;display:flex;align-items:center;gap:.45rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card-h h3 svg{width:.92rem;height:.92rem;stroke-width:1.7;opacity:.6}
 .card-h .hint{font-size:.73rem;color:var(--txt-4);font-weight:500}
 .card-b{padding:1rem}
@@ -31,7 +31,7 @@
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.4rem;height:2.1rem;padding:0 .82rem;
   border-radius:var(--r-sm);background:var(--panel-2);border:1px solid var(--stroke-2);
-  font-size:.78rem;font-weight:600;color:var(--txt);white-space:nowrap;
+  font-size:.84rem;font-weight:600;color:var(--txt);white-space:nowrap;
   transition:background var(--dur-fast),border-color var(--dur-fast),transform var(--dur-fast),box-shadow var(--dur-fast),color var(--dur-fast)
 }
 .btn svg{width:.9rem;height:.9rem;stroke-width:1.8}
@@ -242,7 +242,7 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
 .search-i input{flex:1;font-size:.79rem;min-width:0}
 
 .task{
-  display:flex;align-items:flex-start;gap:.7rem;padding:.68rem .75rem;border-radius:var(--r-sm);
+  display:flex;align-items:flex-start;gap:.7rem;padding:.8rem .9rem;border-radius:var(--r-sm);
   border:1px solid var(--stroke);background:var(--panel);position:relative;
   transition:border-color var(--dur-fast),background var(--dur-fast),transform var(--dur-fast),box-shadow var(--dur-fast)
 }
@@ -312,7 +312,7 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
 .ev-dot.now{box-shadow:0 0 0 1px color-mix(in srgb,var(--txt) 40%,transparent)}
 
 .agenda{padding:.85rem;display:flex;flex-direction:column;gap:.55rem;position:sticky;top:0}
-.agenda-date{font-size:.78rem;font-weight:650;display:flex;flex-direction:column;gap:.05rem}
+.agenda-date{font-size:.84rem;font-weight:650;display:flex;flex-direction:column;gap:.05rem}
 .agenda-date small{font-size:.73rem;color:var(--txt-3);font-weight:400;text-transform:capitalize}
 .agenda-list{display:flex;flex-direction:column;gap:.35rem;max-height:26rem;overflow-y:auto}
 .agenda-ev{display:flex;gap:.55rem;padding:.45rem .5rem;border-radius:8px;background:var(--panel);
