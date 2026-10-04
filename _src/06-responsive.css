@@ -229,7 +229,7 @@
     background:rgba(255,255,255,.85);opacity:0
   }
   .cal-cell.has-ev::after{opacity:.85}
-  .cal-cell.has-today-ev::after{background:var(--warn);box-shadow:0 0 6px var(--warn)}
+  .cal-cell.has-today-ev::after{background:rgba(255,255,255,.85);box-shadow:0 0 6px rgba(255,255,255,.85)}
 
   .frow,.frow-3{grid-template-columns:1fr}
   .modal-b{padding:.9rem}
