@@ -1003,7 +1003,7 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
   .ev-dot.more{display:flex}
   .cal-cell::after{
     content:"";position:absolute;left:.28rem;right:.28rem;bottom:.22rem;height:.2rem;border-radius:2px;
-    background:var(--accent);opacity:0
+    background:rgba(255,255,255,.85);opacity:0
   }
   .cal-cell.has-ev::after{opacity:.85}
   .cal-cell.has-today-ev::after{background:var(--warn);box-shadow:0 0 6px var(--warn)}
@@ -1109,12 +1109,12 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
 .tab svg{width:1.2rem;height:1.2rem;stroke-width:1.65;transition:stroke-width var(--dur-fast),transform var(--dur-fast)}
 .tab span{line-height:1;font-size:.62rem;letter-spacing:-.01em}
 .tab.on{color:#fff}
-.tab.on svg{stroke:color-mix(in srgb,var(--accent) 90%,#fff);stroke-width:2.05}
+.tab.on svg{stroke:color-mix(in srgb,rgba(255,255,255,.85) 90%,#fff);stroke-width:2.05}
 .tab.on::after{
   content:"";position:absolute;top:2px;left:50%;transform:translateX(-50%);
   width:1.35rem;height:.19rem;border-radius:3px;
-  background:var(--accent);
-  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 70%,transparent);
+  background:rgba(255,255,255,.85);
+  box-shadow:0 0 10px color-mix(in srgb,rgba(255,255,255,.85) 70%,transparent);
   animation:tabBarIn .32s var(--ease)
 }
 @keyframes tabBarIn{from{opacity:0;transform:translateX(-50%) scaleX(.2)}to{opacity:1;transform:translateX(-50%) scaleX(1)}}

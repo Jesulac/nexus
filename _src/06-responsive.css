@@ -226,7 +226,7 @@
   .ev-dot.more{display:flex}
   .cal-cell::after{
     content:"";position:absolute;left:.28rem;right:.28rem;bottom:.22rem;height:.2rem;border-radius:2px;
-    background:var(--accent);opacity:0
+    background:rgba(255,255,255,.85);opacity:0
   }
   .cal-cell.has-ev::after{opacity:.85}
   .cal-cell.has-today-ev::after{background:var(--warn);box-shadow:0 0 6px var(--warn)}
