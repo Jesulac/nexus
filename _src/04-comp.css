@@ -77,8 +77,8 @@ button.chip:hover{background:var(--panel-3);color:var(--txt)}
 .field{display:flex;flex-direction:column;gap:.32rem}
 .field label{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--txt-4);font-weight:650}
 .input,.textarea,.select{
-  width:100%;background:rgba(0,0,0,.34);border:1px solid var(--stroke);border-radius:var(--r-xs);
-  padding:.5rem .65rem;font-size:.82rem;color:var(--txt);
+  width:100%;background:rgba(0,0,0,.34);border:1px solid var(--stroke);border-radius:10px;
+  padding:.7rem .8rem;font-size:.82rem;color:var(--txt);
   transition:border-color var(--dur-fast),background var(--dur-fast),box-shadow var(--dur-fast)
 }
 .input::placeholder,.textarea::placeholder{color:var(--txt-4)}
@@ -234,7 +234,7 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
 .toolbar{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;padding:.7rem .8rem}
 .toolbar .grow{flex:1;min-width:8rem}
 .search-i{display:flex;align-items:center;gap:.45rem;background:rgba(0,0,0,.3);border:1px solid var(--stroke);
-  border-radius:var(--r-xs);padding:0 .55rem;height:1.95rem;flex:1;min-width:9rem;transition:border-color var(--dur-fast)}
+  border-radius:10px;padding:0 .55rem;height:1.95rem;flex:1;min-width:9rem;transition:border-color var(--dur-fast)}
 .search-i:focus-within{border-color:color-mix(in srgb,var(--txt) 50%,transparent)}
 .search-i .ic{width:.82rem;height:.82rem;border:1.5px solid var(--txt-4);border-radius:50%;position:relative;flex:none}
 .search-i .ic::after{content:"";position:absolute;width:.38rem;height:1.5px;background:var(--txt-4);
