@@ -21,7 +21,7 @@
 @media (max-width:1180px){
   .tabbar{display:flex}
   /* el contenido deja de ir hasta el borde inferior */
-  .view{padding-bottom:calc(4.6rem + env(safe-area-inset-bottom))}
+  .view{padding-bottom:calc(4.6rem + env(safe-area-inset-bottom) + env(safe-area-inset-bottom))}
   /* en movil el boton de menu sigue haciendo falta para el resto de vistas */
   .nav-toggle{display:grid}
 }
