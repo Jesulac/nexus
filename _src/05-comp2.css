@@ -237,9 +237,8 @@
 .pick{padding:.34rem .6rem;border-radius:7px;font-size:.73rem;font-weight:600;background:var(--panel);
   border:1px solid var(--stroke);color:var(--txt-3);transition:all var(--dur-fast)}
 .pick:hover{background:var(--panel-2);color:var(--txt)}
-.pick.on{background:color-mix(in srgb,var(--pc,var(--txt)) 20%,transparent);
-  border-color:color-mix(in srgb,var(--pc,var(--txt)) 45%,transparent);color:#fff}
-.pick.on.p-alta{--pc:rgba(255,255,255,.85)}.pick.on.p-media{--pc:rgba(255,255,255,.85)}.pick.on.p-baja{--pc:rgba(255,255,255,.85)}
+.pick.on{background:var(--panel-3);border-color:var(--stroke-3);color:#fff}
+.pick.on.p-alta{--pc:var(--txt)}.pick.on.p-media{--pc:var(--txt)}.pick.on.p-baja{--pc:var(--txt)}
 .tagpick{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center}
 .tagpick .tg{padding:.3rem .55rem;border-radius:6px;font-size:.71rem;font-weight:600;cursor:pointer;
   background:var(--panel);border:1px solid var(--stroke);color:var(--txt-3);transition:all var(--dur-fast)}
@@ -254,7 +253,7 @@
    ============================================================ */
 .toasts{position:fixed;bottom:1.15rem;right:1.15rem;z-index:900;display:flex;flex-direction:column-reverse;gap:.45rem;pointer-events:none}
 .toast{display:flex;align-items:center;gap:.6rem;padding:.62rem .85rem .62rem .68rem;border-radius:11px;
-  background:rgba(17,18,21,.94);border:1px solid var(--stroke-2);box-shadow:var(--shadow-lg);
+  background:rgba(0,0,0,.96);border:1px solid var(--stroke-2);box-shadow:var(--shadow-lg);
   font-size:.78rem;font-weight:500;max-width:23rem;pointer-events:auto;
   animation:toastIn .34s var(--ease);position:relative;overflow:hidden}
 @keyframes toastIn{from{opacity:0;transform:translateX(30px) scale(.94)}to{opacity:1;transform:none}}
