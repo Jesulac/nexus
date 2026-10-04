@@ -208,10 +208,10 @@
     gap:.7rem;padding-left:.7rem;padding-right:.7rem
   }
   .topbar .search{display:none}
-  .crumbs b{font-size:.85rem}
-  .crumbs small{font-size:.63rem}
-  .clock b{font-size:.78rem}
-  .clock span{font-size:.6rem}
+  .crumbs b{font-size:.95rem}
+  .crumbs small{font-size:.72rem}
+  .clock b{font-size:.84rem}
+  .clock span{font-size:.68rem}
 
   .task,.kcard,.lst-row{padding:.7rem .6rem}
   .card-h{padding:.8rem .85rem}
