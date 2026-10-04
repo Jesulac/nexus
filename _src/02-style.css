@@ -83,6 +83,8 @@ body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
 
 /* microinteracciones táctiles */
 @media (hover:none) and (pointer:coarse){
+  .kcard:active{transform:scale(.97)}
+  .card:active{transform:scale(.97)}
   .nav-item:active{transform:scale(.97);background:rgba(255,255,255,.12)}
   .tab:active{transform:scale(.92)}
   .btn:active{transform:scale(.96);background:var(--panel-3)}
