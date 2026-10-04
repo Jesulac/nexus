@@ -976,7 +976,7 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.4)
 /* ---------- 760px: topbar compacta y touch ---------- */
 @media (max-width:760px){
   /* el scroll del tablero depende de touch-action:pan-y en las tarjetas */
-  .col-b{touch-action:pan-y}
+  .col-b{touch-action:pan-y;padding-bottom:calc(env(safe-area-inset-bottom) + 1rem)}
 
   /* iOS hace zoom al enfocar cualquier campo con letra < 16px: hay que
      subir el tamaño de los inputs aunque visualmente parezca grande */
